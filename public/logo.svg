@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" fill="none">
+  <!-- Minimalist Acoustic Wave / Sound Bars -->
+  <rect x="10" y="15" width="4" height="10" rx="2" fill="currentColor"/>
+  <rect x="20" y="10" width="4" height="20" rx="2" fill="currentColor"/>
+  <rect x="30" y="5" width="4" height="30" rx="2" fill="currentColor"/>
+  <rect x="40" y="12" width="4" height="16" rx="2" fill="currentColor"/>
+  <rect x="50" y="18" width="4" height="4" rx="2" fill="currentColor"/>
+  <!-- Silence Text Next to it -->
+  <text x="65" y="30" font-family="'Barlow Condensed', sans-serif" font-weight="900" font-size="32" fill="currentColor" letter-spacing="1">SILENCE</text>
+</svg>
