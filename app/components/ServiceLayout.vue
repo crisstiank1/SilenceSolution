@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-white dark:bg-[#0a0a0a]">
+  <div class="min-h-screen">
     <div class="container mx-auto px-4 lg:px-8 py-12 pt-32">
       <!-- 1. Botón Volver -->
       <button @click="router.back()" class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-green-mid dark:hover:text-green-mid transition-colors mb-8 font-medium font-sans">
@@ -10,7 +10,7 @@
       </button>
 
       <!-- 2. Hero -->
-      <div class="mb-16" v-motion-fade-visible-once>
+      <div class="mb-16" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600 } }">
         <h1 class="font-display text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wide">
           {{ title }}
         </h1>
@@ -26,7 +26,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
         <!-- 4. Beneficios -->
-        <div v-motion-slide-up-visible-once>
+        <div v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <h2 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-100 dark:border-gray-800 pb-4">Beneficios principales</h2>
           <ul class="space-y-4">
             <li v-for="(benefit, i) in benefits" :key="i" class="flex items-start gap-4">
@@ -41,7 +41,7 @@
         </div>
 
         <!-- 5. Specs -->
-        <div v-motion-slide-up-visible-once :delay="100">
+        <div v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
           <h2 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-8 border-b border-gray-100 dark:border-gray-800 pb-4">Especificaciones</h2>
           <div class="bg-gray-50 dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
             <table class="w-full text-left font-sans text-sm md:text-base">
@@ -57,7 +57,7 @@
       </div>
 
       <!-- 6. CTA -->
-      <div class="text-center py-16 bg-green-deep/5 dark:bg-green-deep/10 rounded-3xl border border-green-deep/10 dark:border-green-deep/20 mb-24" v-motion-slide-up-visible-once>
+      <div class="text-center py-16 bg-green-deep/5 dark:bg-green-deep/10 rounded-3xl border border-green-deep/10 dark:border-green-deep/20 mb-24" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
         <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wider">¿Listo para mejorar tu acústica?</h2>
         <NuxtLink :to="{ path: '/', hash: '#contacto' }" class="inline-flex items-center justify-center px-10 py-4 bg-green-deep hover:bg-green-mid text-white rounded-full font-medium transition-transform hover:scale-105 shadow-md">
           Solicitar cotización

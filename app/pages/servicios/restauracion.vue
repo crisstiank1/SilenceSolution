@@ -7,31 +7,40 @@
   >
     <!-- Galería -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
-      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
-        <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans">
-          [Imagen: Antes del tratamiento]
-        </div>
-        <!-- <img src="~/assets/img/restauracion-1.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Restauración" /> -->
-      </div>
-      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group md:row-span-2 auto-rows-[616px]">
-        <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-center px-4">
-          [Video nativo: Proceso de instalación o resultado final]
-        </div>
-        <!-- <video class="w-full h-full object-cover" autoplay loop muted playsinline>
-          <source src="~/assets/vid/restauracion.mp4" type="video/mp4" />
-        </video> -->
-      </div>
-      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
-        <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans">
-          [Imagen: Después del tratamiento]
-        </div>
-        <!-- <img src="~/assets/img/restauracion-2.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Restauración" /> -->
-      </div>
+      <MediaCard :item="mediaItems[0]!" @click="openLightbox(0)" class="w-full h-full" />
+      <MediaCard :item="mediaItems[1]!" @click="openLightbox(1)" class="w-full h-full md:row-span-2" />
+      <MediaCard :item="mediaItems[2]!" @click="openLightbox(2)" class="w-full h-full" />
     </div>
+    
+    <MediaLightbox 
+      :isOpen="lightboxOpen" 
+      :items="mediaItems" 
+      :initialIndex="activeIndex" 
+      @close="lightboxOpen = false" 
+    />
   </ServiceLayout>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import MediaCard from '~/components/media/MediaCard.vue'
+import MediaLightbox from '~/components/media/MediaLightbox.vue'
+import type { MediaItem } from '~/types/media'
+
+const mediaItems: MediaItem[] = [
+  { type: 'image', src: '/media/images/restauracion.jpg', title: 'Antes del tratamiento' },
+  { type: 'video', src: '/media/videos/restauracion/restauracionVideo.mp4', title: 'Tratamiento Acústico Demo' },
+  { type: 'image', src: '/media/images/restauracion2.jpg', title: 'Después del tratamiento' }
+]
+
+const lightboxOpen = ref(false)
+const activeIndex = ref(0)
+
+const openLightbox = (index: number) => {
+  activeIndex.value = index
+  lightboxOpen.value = true
+}
+
 const pageData = {
   title: 'Restauración Acústica',
   subtitle: 'Diagnóstico y tratamiento de espacios existentes mediante la instalación estratégica de materiales fonoabsorbentes para eliminar la reverberación y ecos molestos, mejorando la inteligibilidad de la voz y el confort acústico.',

@@ -7,7 +7,9 @@
       <!-- Logo SVG Real -->
       <NuxtLink to="/" class="relative z-50 flex items-center group transition-transform hover:scale-105 active:scale-95">
         <div class="absolute inset-0 bg-green-mid rounded-full blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-        <img src="/logo.svg" alt="Silence Solution Logo" class="h-8 md:h-10 text-green-deep dark:text-white" />
+        <ClientOnly>
+          <img :src="logoSrc" alt="Silence Solution Logo" class="h-8 md:h-10 w-auto" />
+        </ClientOnly>
       </NuxtLink>
 
       <!-- Desktop Links -->
@@ -107,7 +109,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+
+const colorMode = useColorMode()
+const logoSrc = computed(() =>
+  colorMode.value === 'dark' ? 'logos/logo.png' : 'logos/logo2.png'
+)
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)

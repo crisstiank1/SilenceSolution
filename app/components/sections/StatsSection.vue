@@ -1,6 +1,6 @@
 <template>
   <section class="py-24 bg-[#f5f5f5] dark:bg-[#0a0a0a] border-y border-gray-200 dark:border-gray-800 transition-colors duration-300">
-    <div class="container mx-auto px-4 lg:px-8 text-center" v-motion-fade-visible-once>
+    <div class="container mx-auto px-4 lg:px-8 text-center" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600 } }">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-gray-300 dark:divide-gray-800">
         
         <div class="flex flex-col items-center justify-center p-4 group">

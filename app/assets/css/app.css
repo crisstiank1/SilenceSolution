@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-green-deep: #10403B;
   --color-green-mid: #127369;
@@ -12,6 +14,13 @@
   --font-display: 'Barlow Condensed', sans-serif;
 }
 
+:root {
+  --color-bg: #f9f9f9;
+  --color-text: #0a0a0a;
+  --color-surface: #ffffff;
+  color-scheme: light;
+}
+
 html.dark {
   --color-bg: #0a0a0a;
   --color-text: #ffffff;
@@ -20,10 +29,8 @@ html.dark {
 }
 
 html {
-  --color-bg: #f9f9f9;
-  --color-text: #0a0a0a;
-  --color-surface: #ffffff;
-  color-scheme: light;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 body {

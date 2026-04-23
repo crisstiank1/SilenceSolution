@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col font-sans text-gray-900 dark:text-gray-100 bg-white dark:bg-[#0a0a0a] transition-colors duration-300">
+  <div class="min-h-screen flex flex-col font-sans transition-colors duration-300 bg-white text-gray-900 dark:bg-[#0a0a0a] dark:text-white">
     <AppNavbar />
     
     <main class="flex-grow pt-20">

@@ -4,7 +4,7 @@
       
       <!-- Top: Mission (Left) & Image (Right) -->
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mb-24">
-        <div class="lg:w-1/2" v-motion-slide-visible-once-bottom>
+        <div class="lg:w-1/2" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <span class="inline-block py-1 px-3 rounded-full bg-green-accent/10 text-green-mid dark:text-green-accent font-sans font-medium text-sm tracking-wider uppercase mb-6">
             Nuestra Misión
           </span>
@@ -17,21 +17,15 @@
         </div>
         
         <div class="lg:w-1/2 w-full" v-motion-fade-visible-once :delay="200">
-          <div class="relative aspect-video lg:aspect-square bg-gray-100 dark:bg-dark-card rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 group shadow-2xl">
-            <div class="absolute inset-0 bg-green-mid/5 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 font-sans p-6 text-center">
-              [Imagen o Video de un proyecto corporativo instalado]
-            </div>
-            <!-- Optional image placeholder -->
-            <!-- <NuxtImg src="/placeholder.jpg" alt="Instalación" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" loading="lazy" /> -->
-          </div>
+          <MediaCard :item="misionMedia[0]!" @click="lightboxOpen = true" class="w-full h-full aspect-video lg:aspect-square" />
+          <MediaLightbox :isOpen="lightboxOpen" :items="misionMedia" @close="lightboxOpen = false" />
         </div>
       </div>
 
       <!-- Bottom: 3 Core Values (Editorial Style) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 border-t border-gray-200 dark:border-gray-800 pt-16">
         
-        <div class="group cursor-pointer" v-motion-slide-up-visible-once>
+        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
             #01
           </div>
@@ -41,7 +35,7 @@
           </p>
         </div>
 
-        <div class="group cursor-pointer" v-motion-slide-up-visible-once :delay="100">
+        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
           <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
             #02
           </div>
@@ -51,7 +45,7 @@
           </p>
         </div>
 
-        <div class="group cursor-pointer" v-motion-slide-up-visible-once :delay="200">
+        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }">
           <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
             #03
           </div>
@@ -66,3 +60,20 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import MediaCard from '~/components/media/MediaCard.vue'
+import MediaLightbox from '~/components/media/MediaLightbox.vue'
+import type { MediaItem } from '~/types/media'
+
+const misionMedia: MediaItem[] = [
+  {
+    type: 'video',
+    src: '/media/videos/mision/misionVideo.mp4',
+    title: 'Soluciones Acústicas Silence Solution'
+  }
+]
+
+const lightboxOpen = ref(false)
+</script>

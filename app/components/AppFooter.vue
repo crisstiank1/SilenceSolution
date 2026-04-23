@@ -4,7 +4,9 @@
     <div class="container mx-auto px-4 lg:px-8 flex flex-col items-center justify-between gap-8 md:flex-row">
       <!-- Logo -->
       <NuxtLink to="/" class="group transition-transform hover:scale-105 active:scale-95">
-        <img src="/logo.svg" alt="Silence Solution Logo" class="h-8 md:h-10 text-green-deep dark:text-white" />
+        <ClientOnly>
+          <img :src="logoSrc" alt="Silence Solution Logo" class="h-8 md:h-10 w-auto" />
+        </ClientOnly>
       </NuxtLink>
       
       <!-- Redes / Contacto -->
@@ -17,7 +19,7 @@
             <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
           </svg>
         </a>
-        <a href="mailto:info@silencesolution.com" class="hover:text-green-mid hover:drop-shadow-[0_0_8px_rgba(18,115,105,0.5)] transition-all hover:scale-110 active:scale-95" aria-label="Email">
+        <a href="mailto:scsilencesolution@gmail.com" class="hover:text-green-mid hover:drop-shadow-[0_0_8px_rgba(18,115,105,0.5)] transition-all hover:scale-110 active:scale-95" aria-label="Email">
           <Mail :size="20" />
         </a>
       </div>
@@ -31,5 +33,11 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Instagram, Mail } from 'lucide-vue-next'
+
+const colorMode = useColorMode()
+const logoSrc = computed(() =>
+  colorMode.value === 'dark' ? 'logos/logo.png' : 'logos/logo2.png'
+)
 </script>

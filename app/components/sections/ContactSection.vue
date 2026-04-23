@@ -5,7 +5,7 @@
       <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 max-w-7xl mx-auto">
         
         <!-- Left Column: Contact Info -->
-        <div class="lg:w-5/12 flex flex-col justify-center" v-motion-slide-visible-once-left>
+        <div class="lg:w-5/12 flex flex-col justify-center" v-motion :initial="{ opacity: 0, x: -24 }" :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }">
           <span class="inline-block self-start py-1 px-3 rounded-full bg-green-accent/10 text-green-mid dark:text-green-accent font-sans font-medium text-sm tracking-wider uppercase mb-6">
             Hablemos
           </span>
@@ -17,11 +17,11 @@
           </p>
 
           <div class="space-y-6">
-            <a href="mailto:info@silencesolution.com" class="group flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-green-mid dark:hover:text-green-mid transition-colors duration-300">
+            <a href="mailto:scsilencesolution@gmail.com" class="group flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-green-mid dark:hover:text-green-mid transition-colors duration-300">
               <div class="w-12 h-12 bg-white dark:bg-dark-card rounded-full flex items-center justify-center border border-gray-200 dark:border-gray-800 group-hover:border-green-mid transition-colors shadow-sm text-green-deep dark:text-gray-300 group-hover:text-green-mid">
                 <Mail :size="20" />
               </div>
-              <span class="font-sans font-medium text-lg">info@silencesolution.com</span>
+              <span class="font-sans font-medium text-lg">scsilencesolution@gmail.com</span>
             </a>
             
             <a href="https://wa.me/570000000000" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-green-mid dark:hover:text-green-mid transition-colors duration-300">
@@ -44,7 +44,7 @@
         </div>
 
         <!-- Right Column: Form -->
-        <div class="lg:w-7/12" v-motion-fade-visible-once :delay="200">
+        <div class="lg:w-7/12" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600, delay: 200 } }">
           <div class="bg-white dark:bg-[#111111] p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-xl relative overflow-hidden">
             <!-- Decorative blur -->
             <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-mid/10 dark:bg-green-mid/5 rounded-full blur-3xl pointer-events-none"></div>

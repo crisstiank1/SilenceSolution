@@ -20,44 +20,86 @@
 
     <!-- Galería (Dynamic based on Tab) -->
     <transition name="fade" mode="out-in">
-      <div :key="activeTab" class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
-        <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
-          <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans p-6 text-center">
-            [Imagen: Exterior de {{ currentTabData.label }}]
+      <div :key="activeTab">
+        <!-- Layout para 3 items (Grid complejo) -->
+        <template v-if="currentMedia && currentMedia.length === 3">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
+            <MediaCard :item="currentMedia[0]!" @click="openLightbox(0)" class="w-full h-full" />
+            <MediaCard :item="currentMedia[1]!" @click="openLightbox(1)" class="w-full h-full md:row-span-2" />
+            <MediaCard :item="currentMedia[2]!" @click="openLightbox(2)" class="w-full h-full" />
           </div>
-        </div>
-        <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group md:row-span-2 auto-rows-[616px]">
-          <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-center p-6">
-            [Video nativo: Demo interior {{ currentTabData.label }}]
+        </template>
+        
+        <!-- Layout para otros casos con media -->
+        <template v-else-if="currentMedia && currentMedia.length > 0">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
+             <MediaCard v-for="(item, i) in currentMedia" :key="i" :item="item" @click="openLightbox(i)" class="w-full h-full" />
           </div>
-        </div>
-        <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
-          <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans p-6 text-center">
-            [Imagen: Detalle de acabados o panel acústico]
+        </template>
+        
+        <!-- Placeholder fallback para cuando no hay media (Layout original) -->
+        <template v-else>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
+            <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
+              <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans p-6 text-center">
+                [Imagen: Exterior de {{ currentTabData.label }}]
+              </div>
+            </div>
+            <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group md:row-span-2 auto-rows-[616px]">
+              <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-center p-6">
+                [Video nativo: Demo interior {{ currentTabData.label }}]
+              </div>
+            </div>
+            <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
+              <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans p-6 text-center">
+                [Imagen: Detalle de acabados o panel acústico]
+              </div>
+            </div>
           </div>
-        </div>
+        </template>
       </div>
     </transition>
+    
+    <MediaLightbox 
+      :isOpen="lightboxOpen" 
+      :items="currentMedia" 
+      :initialIndex="activeIndex" 
+      @close="lightboxOpen = false" 
+    />
   </ServiceLayout>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import MediaCard from '~/components/media/MediaCard.vue'
+import MediaLightbox from '~/components/media/MediaLightbox.vue'
+import type { MediaItem } from '~/types/media'
 
 const route = useRoute()
 const router = useRouter()
 
-const activeTab = ref('medialuna')
+type TabKey = 'medialuna' | 'circular' | 'ovalada' | 'personalizada'
 
-const tabs = [
+const activeTab = ref<TabKey>('medialuna')
+
+const tabs: { id: TabKey; label: string }[] = [
   { id: 'medialuna', label: 'Media Luna' },
   { id: 'circular', label: 'Circular' },
   { id: 'ovalada', label: 'Ovalada' },
   { id: 'personalizada', label: 'Personalizada ⭐' }
 ]
 
-const dataMap: Record<string, any> = {
+interface TabData {
+  title: string
+  label: string
+  subtitle: string
+  benefits: string[]
+  specs: { label: string; value: string }[]
+  media?: MediaItem[]
+}
+
+const dataMap: Record<TabKey, TabData> = {
   medialuna: {
     title: 'Cabina Media Luna',
     label: 'Media Luna',
@@ -74,7 +116,10 @@ const dataMap: Record<string, any> = {
       { label: 'Dimensiones', value: '1.2m x 1.0m x 2.2m' },
       { label: 'Aislamiento', value: 'Clase A (hasta 40dB)' },
       { label: 'Conectividad', value: '2 enchufes 110V/220V, 2 USB-C + USB-A' }
-    ]
+    ],
+    media: [
+      { type: 'video', src: '/media/videos/cabinas/cabinaMediaLuna.mp4', title: 'Demo' }
+    ] as MediaItem[]
   },
   circular: {
     title: 'Cabina Circular',
@@ -92,7 +137,12 @@ const dataMap: Record<string, any> = {
       { label: 'Diámetro', value: '1.1m' },
       { label: 'Altura Interior', value: '2.05m' },
       { label: 'Acústica', value: 'Absorción NRC 0.90 en interior' }
-    ]
+    ],
+    media: [
+      { type: 'image', src: '/media/images/cabinaCircular.jpg', title: 'Exterior' },
+      { type: 'video', src: '/media/videos/cabinas/cabinaCircular.mp4', title: 'Demo' },
+      { type: 'image', src: '/media/images/CabinaCircular2.jpg', title: 'Interior' }
+    ] as MediaItem[]
   },
   ovalada: {
     title: 'Cabina Ovalada',
@@ -110,7 +160,10 @@ const dataMap: Record<string, any> = {
       { label: 'Dimensiones', value: '2.1m x 1.4m x 2.2m' },
       { label: 'Ventilación', value: 'Doble sistema de flujo de aire (100 m³/h)' },
       { label: 'Peso', value: 'Aprox. 450 Kg' }
-    ]
+    ],
+    media: [
+      { type: 'image', src: '/media/images/cabinaOvalada.jpg', title: 'Exterior' }
+    ] as MediaItem[]
   },
   personalizada: {
     title: 'Cabina Personalizada',
@@ -128,19 +181,30 @@ const dataMap: Record<string, any> = {
       { label: 'Aislamiento', value: 'Configurable (de 30dB hasta 60dB+)' },
       { label: 'Tiempo de fabricación', value: '4 - 8 Semanas' },
       { label: 'Garantía extendida', value: '5 años en estructura' }
-    ]
+    ],
+    media: [] as MediaItem[]
   }
 }
 
 const currentTabData = computed(() => dataMap[activeTab.value])
+const currentMedia = computed(() => dataMap[activeTab.value].media || [])
+
+const lightboxOpen = ref(false)
+const activeIndex = ref(0)
+
+const openLightbox = (index: number) => {
+  activeIndex.value = index
+  lightboxOpen.value = true
+}
 
 watch(activeTab, (newVal) => {
   router.replace({ query: { ...route.query, tab: newVal } })
 })
 
 onMounted(() => {
-  if (route.query.tab && dataMap[route.query.tab as string]) {
-    activeTab.value = route.query.tab as string
+  const tabQuery = route.query.tab as string
+  if (tabQuery && Object.keys(dataMap).includes(tabQuery)) {
+    activeTab.value = tabQuery as TabKey
   }
 })
 

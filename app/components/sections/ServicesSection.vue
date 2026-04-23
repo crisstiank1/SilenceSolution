@@ -2,7 +2,7 @@
   <section id="servicios" class="py-24 bg-white dark:bg-[#111111] transition-colors duration-300">
     <div class="container mx-auto px-4 lg:px-8">
       
-      <div class="text-center mb-16" v-motion-fade-visible-once>
+      <div class="text-center mb-16" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600 } }">
         <span class="inline-block py-1 px-3 rounded-full bg-green-accent/10 text-green-mid dark:text-green-accent font-sans font-medium text-sm tracking-wider uppercase mb-4">
           Nuestras Soluciones
         </span>
@@ -14,7 +14,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         
         <!-- Restauración -->
-        <NuxtLink to="/servicios/restauracion" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion-slide-up-visible-once>
+        <NuxtLink to="/servicios/restauracion" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <!-- Hover Left Border -->
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-green-mid group-hover:h-full transition-all duration-500 ease-out"></span>
           
@@ -29,7 +29,7 @@
         </NuxtLink>
 
         <!-- Cabina Media Luna -->
-        <NuxtLink to="/servicios/cabinas?tab=medialuna" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion-slide-up-visible-once :delay="100">
+        <NuxtLink to="/servicios/cabinas?tab=medialuna" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-green-mid group-hover:h-full transition-all duration-500 ease-out"></span>
           <div class="w-12 h-12 bg-green-accent/10 rounded-xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 transition-transform duration-300">
             <Box :size="24" />
@@ -40,7 +40,7 @@
         </NuxtLink>
 
         <!-- Cabina Circular -->
-        <NuxtLink to="/servicios/cabinas?tab=circular" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion-slide-up-visible-once :delay="200">
+        <NuxtLink to="/servicios/cabinas?tab=circular" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }">
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-green-mid group-hover:h-full transition-all duration-500 ease-out"></span>
           <div class="w-12 h-12 bg-green-accent/10 rounded-xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 transition-transform duration-300">
             <Mic2 :size="24" />
@@ -51,7 +51,7 @@
         </NuxtLink>
 
         <!-- Cabina Ovalada -->
-        <NuxtLink to="/servicios/cabinas?tab=ovalada" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion-slide-up-visible-once :delay="300">
+        <NuxtLink to="/servicios/cabinas?tab=ovalada" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 300 } }">
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-green-mid group-hover:h-full transition-all duration-500 ease-out"></span>
           <div class="w-12 h-12 bg-green-accent/10 rounded-xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 transition-transform duration-300">
             <Maximize :size="24" />
@@ -62,7 +62,7 @@
         </NuxtLink>
 
         <!-- Mamparas -->
-        <NuxtLink to="/servicios/mamparas" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion-slide-up-visible-once :delay="400">
+        <NuxtLink to="/servicios/mamparas" class="group relative block p-8 bg-[#f9f9f9] dark:bg-dark-card border border-gray-200 dark:border-gray-800 rounded-2xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-green-mid group-hover:h-full transition-all duration-500 ease-out"></span>
           <div class="w-12 h-12 bg-green-accent/10 rounded-xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 transition-transform duration-300">
             <Layers :size="24" />
@@ -73,7 +73,7 @@
         </NuxtLink>
 
         <!-- Cabina Personalizada (Destacada) -->
-        <NuxtLink to="/servicios/cabinas?tab=personalizada" class="group relative block p-8 bg-green-deep border-2 border-green-mid rounded-2xl transform transition-all duration-500 hover:shadow-2xl hover:shadow-green-mid/20 hover:-translate-y-2 overflow-hidden" v-motion-slide-up-visible-once :delay="500">
+        <NuxtLink to="/servicios/cabinas?tab=personalizada" class="group relative block p-8 bg-green-deep border-2 border-green-mid rounded-2xl transform transition-all duration-500 hover:shadow-2xl hover:shadow-green-mid/20 hover:-translate-y-2 overflow-hidden" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
           <!-- Hover Left Border for highlighted -->
           <span class="absolute left-0 bottom-0 w-1.5 h-0 bg-white group-hover:h-full transition-all duration-500 ease-out z-20"></span>
           

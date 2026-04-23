@@ -7,12 +7,10 @@
   >
     <!-- Galería -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px] md:auto-rows-[350px]">
-      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group md:col-span-2">
-        <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans p-6 text-center">
-          [Imagen ancha: Oficina moderna con instalación de mamparas acústicas separadoras]
-        </div>
-      </div>
-      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group cursor-pointer hover:border-green-mid transition-colors duration-300">
+      <MediaCard :item="mediaItems[0]!" @click="openLightbox(0)" class="w-full h-full md:col-span-2" />
+      
+      <!-- Placeholder Video -->
+      <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group cursor-pointer hover:border-green-mid transition-colors duration-300 h-full">
         <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-center p-6">
           [Video: Demostración de mampara abatible o sistema de rieles 360°]
           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:bg-green-mid/20 transition-colors">
@@ -21,10 +19,34 @@
         </div>
       </div>
     </div>
+    
+    <MediaLightbox 
+      :isOpen="lightboxOpen" 
+      :items="mediaItems" 
+      :initialIndex="activeIndex" 
+      @close="lightboxOpen = false" 
+    />
   </ServiceLayout>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+import MediaCard from '~/components/media/MediaCard.vue'
+import MediaLightbox from '~/components/media/MediaLightbox.vue'
+import type { MediaItem } from '~/types/media'
+
+const mediaItems: MediaItem[] = [
+  { type: 'image', src: '/media/images/laminado.jpg', title: 'Laminado Acústico en oficina' }
+]
+
+const lightboxOpen = ref(false)
+const activeIndex = ref(0)
+
+const openLightbox = (index: number) => {
+  activeIndex.value = index
+  lightboxOpen.value = true
+}
+
 const pageData = {
   title: 'Mamparas / Laminados Acústicos',
   subtitle: 'Divisiones acústicas móviles y fijas. La solución perfecta para seccionar ambientes grandes o espacios de coworking sin construir muros, garantizando privacidad visual y absorción del sonido ambiental.',
