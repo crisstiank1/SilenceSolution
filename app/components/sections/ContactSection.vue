@@ -1,10 +1,7 @@
 <template>
   <section id="contacto" class="py-24 md:py-32 bg-[#f5f5f5] dark:bg-[#0a0a0a] transition-colors duration-300">
     <div class="container mx-auto px-4 lg:px-8">
-      
       <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 max-w-7xl mx-auto">
-        
-        <!-- Left Column: Contact Info -->
         <div class="lg:w-5/12 flex flex-col justify-center" v-motion :initial="{ opacity: 0, x: -24 }" :visible-once="{ opacity: 1, x: 0, transition: { duration: 600 } }">
           <span class="inline-block self-start py-1 px-3 rounded-full bg-green-accent/10 text-green-mid dark:text-green-accent font-sans font-medium text-sm tracking-wider uppercase mb-6">
             Hablemos
@@ -23,7 +20,7 @@
               </div>
               <span class="font-sans font-medium text-lg">scsilencesolution@gmail.com</span>
             </a>
-            
+
             <a href="https://wa.me/570000000000" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 text-gray-700 dark:text-gray-300 hover:text-green-mid dark:hover:text-green-mid transition-colors duration-300">
               <div class="w-12 h-12 bg-white dark:bg-dark-card rounded-full flex items-center justify-center border border-gray-200 dark:border-gray-800 group-hover:border-green-mid transition-colors shadow-sm text-green-deep dark:text-gray-300 group-hover:text-green-mid">
                 <Phone :size="20" />
@@ -43,10 +40,8 @@
           </div>
         </div>
 
-        <!-- Right Column: Form -->
         <div class="lg:w-7/12" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600, delay: 200 } }">
           <div class="bg-white dark:bg-[#111111] p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-xl relative overflow-hidden">
-            <!-- Decorative blur -->
             <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-mid/10 dark:bg-green-mid/5 rounded-full blur-3xl pointer-events-none"></div>
 
             <form @submit.prevent="submitForm" class="space-y-8 relative z-10">
@@ -55,7 +50,7 @@
                   <input type="text" id="name" v-model="form.name" required class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-mid dark:focus:border-green-mid py-3 outline-none text-gray-900 dark:text-white transition-colors peer placeholder-transparent" placeholder="Nombre completo" />
                   <label for="name" class="absolute left-0 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-green-mid -translate-y-4 peer-placeholder-shown:translate-y-0 cursor-text pointer-events-none">Nombre completo</label>
                 </div>
-                
+
                 <div class="relative">
                   <input type="text" id="company" v-model="form.company" class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-mid dark:focus:border-green-mid py-3 outline-none text-gray-900 dark:text-white transition-colors peer placeholder-transparent" placeholder="Empresa / Espacio" />
                   <label for="company" class="absolute left-0 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-green-mid -translate-y-4 peer-placeholder-shown:translate-y-0 cursor-text pointer-events-none">Empresa / Espacio</label>
@@ -67,7 +62,7 @@
                   <input type="text" id="city" v-model="form.city" required class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-mid dark:focus:border-green-mid py-3 outline-none text-gray-900 dark:text-white transition-colors peer placeholder-transparent" placeholder="Ciudad" />
                   <label for="city" class="absolute left-0 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-green-mid -translate-y-4 peer-placeholder-shown:translate-y-0 cursor-text pointer-events-none">Ciudad</label>
                 </div>
-                
+
                 <div class="relative">
                   <input type="tel" id="phone" v-model="form.phone" required class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-mid dark:focus:border-green-mid py-3 outline-none text-gray-900 dark:text-white transition-colors peer placeholder-transparent" placeholder="Teléfono" />
                   <label for="phone" class="absolute left-0 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-4 peer-focus:text-sm peer-focus:text-green-mid -translate-y-4 peer-placeholder-shown:translate-y-0 cursor-text pointer-events-none">Teléfono</label>
@@ -97,7 +92,7 @@
               <div class="pt-6">
                 <button type="submit" :disabled="isSubmitting || successMsg" class="relative overflow-hidden w-full px-8 py-4 bg-green-deep hover:bg-green-mid text-white rounded-xl font-medium transition-all shadow-md group disabled:opacity-90 disabled:cursor-not-allowed disabled:hover:bg-green-deep">
                   <span v-if="!isSubmitting && !successMsg" class="absolute inset-0 w-full h-full bg-green-mid scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out z-0"></span>
-                  
+
                   <div class="relative z-10 flex items-center justify-center gap-3">
                     <template v-if="isSubmitting">
                       <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -120,11 +115,9 @@
                 </button>
                 <p v-if="errorMsg" class="mt-4 text-center text-red-500 dark:text-red-400 font-medium text-sm transition-opacity">Hubo un error al enviar. Por favor intenta de nuevo.</p>
               </div>
-
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </section>

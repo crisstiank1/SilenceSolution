@@ -1,8 +1,8 @@
 <template>
   <div class="fixed bottom-6 right-6 z-50 group">
     <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-30"></div>
-    <a 
-      href="https://wa.me/570000000000" 
+    <a
+      href="https://wa.me/570000000000"
       target="_blank"
       rel="noopener noreferrer"
       class="relative flex bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all duration-300"
@@ -14,7 +14,6 @@
     </a>
     <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
       ¿Hablamos?
-      <!-- Tooltip tail -->
       <div class="absolute top-1/2 left-full -translate-y-1/2 border-[6px] border-transparent border-l-gray-900 dark:border-l-gray-100"></div>
     </div>
   </div>

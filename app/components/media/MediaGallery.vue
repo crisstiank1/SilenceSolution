@@ -2,22 +2,22 @@
   <div>
     <!-- Media Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <MediaCard 
-        v-for="(item, index) in items" 
-        :key="index" 
-        :item="item" 
-        @click="openLightbox(index)" 
+      <MediaCard
+        v-for="(item, index) in items"
+        :key="index"
+        :item="item"
+        @click="openLightbox(index)"
         v-motion-slide-up-visible-once
         :delay="index * 100"
       />
     </div>
 
     <!-- Lightbox -->
-    <MediaLightbox 
-      :isOpen="lightboxOpen" 
-      :items="items" 
-      :initialIndex="activeIndex" 
-      @close="closeLightbox" 
+    <MediaLightbox
+      :isOpen="lightboxOpen"
+      :items="items"
+      :initialIndex="activeIndex"
+      @close="closeLightbox"
     />
   </div>
 </template>

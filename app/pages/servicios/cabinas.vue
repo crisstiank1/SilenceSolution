@@ -1,14 +1,13 @@
 <template>
-  <ServiceLayout 
+  <ServiceLayout
     :title="currentTabData.title"
     :subtitle="currentTabData.subtitle"
     :benefits="currentTabData.benefits"
     :specs="currentTabData.specs"
   >
-    <!-- Tabs Navigation -->
     <div class="flex flex-wrap gap-2 md:gap-4 mb-10 border-b border-gray-200 dark:border-gray-800 pb-4">
-      <button 
-        v-for="(tab, index) in tabs" 
+      <button
+        v-for="(tab, index) in tabs"
         :key="index"
         @click="activeTab = tab.id"
         class="px-5 py-2.5 md:px-8 md:py-3 rounded-full font-medium text-sm transition-all duration-300 transform active:scale-95"
@@ -18,10 +17,8 @@
       </button>
     </div>
 
-    <!-- Galería (Dynamic based on Tab) -->
     <transition name="fade" mode="out-in">
       <div :key="activeTab">
-        <!-- Layout para 3 items (Grid complejo) -->
         <template v-if="currentMedia && currentMedia.length === 3">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
             <MediaCard :item="currentMedia[0]!" @click="openLightbox(0)" class="w-full h-full" />
@@ -29,15 +26,13 @@
             <MediaCard :item="currentMedia[2]!" @click="openLightbox(2)" class="w-full h-full" />
           </div>
         </template>
-        
-        <!-- Layout para otros casos con media -->
+
         <template v-else-if="currentMedia && currentMedia.length > 0">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
-             <MediaCard v-for="(item, i) in currentMedia" :key="i" :item="item" @click="openLightbox(i)" class="w-full h-full" />
+            <MediaCard v-for="(item, i) in currentMedia" :key="i" :item="item" @click="openLightbox(i)" class="w-full h-full" />
           </div>
         </template>
-        
-        <!-- Placeholder fallback para cuando no hay media (Layout original) -->
+
         <template v-else>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
             <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group">
@@ -59,12 +54,12 @@
         </template>
       </div>
     </transition>
-    
-    <MediaLightbox 
-      :isOpen="lightboxOpen" 
-      :items="currentMedia" 
-      :initialIndex="activeIndex" 
-      @close="lightboxOpen = false" 
+
+    <MediaLightbox
+      :isOpen="lightboxOpen"
+      :items="currentMedia"
+      :initialIndex="activeIndex"
+      @close="lightboxOpen = false"
     />
   </ServiceLayout>
 </template>
@@ -118,7 +113,7 @@ const dataMap: Record<TabKey, TabData> = {
       { label: 'Conectividad', value: '2 enchufes 110V/220V, 2 USB-C + USB-A' }
     ],
     media: [
-      { type: 'video', src: '/media/videos/cabinas/cabinaMediaLuna.mp4', title: 'Demo' }
+      { type: 'video', src: 'media/videos/cabinas/cabinaMediaLuna.mp4', title: 'Demo' }
     ] as MediaItem[]
   },
   circular: {
@@ -139,9 +134,9 @@ const dataMap: Record<TabKey, TabData> = {
       { label: 'Acústica', value: 'Absorción NRC 0.90 en interior' }
     ],
     media: [
-      { type: 'image', src: '/media/images/cabinaCircular.jpg', title: 'Exterior' },
-      { type: 'video', src: '/media/videos/cabinas/cabinaCircular.mp4', title: 'Demo' },
-      { type: 'image', src: '/media/images/CabinaCircular2.jpg', title: 'Interior' }
+      { type: 'image', src: 'media/images/cabinaCircular.jpg', title: 'Exterior' },
+      { type: 'video', src: 'media/videos/cabinas/cabinaCircular.mp4', title: 'Demo' },
+      { type: 'image', src: 'media/images/CabinaCircular2.jpg', title: 'Interior' }
     ] as MediaItem[]
   },
   ovalada: {
@@ -162,7 +157,7 @@ const dataMap: Record<TabKey, TabData> = {
       { label: 'Peso', value: 'Aprox. 450 Kg' }
     ],
     media: [
-      { type: 'image', src: '/media/images/cabinaOvalada.jpg', title: 'Exterior' }
+      { type: 'image', src: 'media/images/cabinaOvalada.jpg', title: 'Exterior' }
     ] as MediaItem[]
   },
   personalizada: {

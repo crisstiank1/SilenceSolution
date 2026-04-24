@@ -1,22 +1,21 @@
 <template>
-  <ServiceLayout 
+  <ServiceLayout
     :title="pageData.title"
     :subtitle="pageData.subtitle"
     :benefits="pageData.benefits"
     :specs="pageData.specs"
   >
-    <!-- Galería -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-[300px]">
       <MediaCard :item="mediaItems[0]!" @click="openLightbox(0)" class="w-full h-full" />
       <MediaCard :item="mediaItems[1]!" @click="openLightbox(1)" class="w-full h-full md:row-span-2" />
       <MediaCard :item="mediaItems[2]!" @click="openLightbox(2)" class="w-full h-full" />
     </div>
-    
-    <MediaLightbox 
-      :isOpen="lightboxOpen" 
-      :items="mediaItems" 
-      :initialIndex="activeIndex" 
-      @close="lightboxOpen = false" 
+
+    <MediaLightbox
+      :isOpen="lightboxOpen"
+      :items="mediaItems"
+      :initialIndex="activeIndex"
+      @close="lightboxOpen = false"
     />
   </ServiceLayout>
 </template>
@@ -28,9 +27,9 @@ import MediaLightbox from '~/components/media/MediaLightbox.vue'
 import type { MediaItem } from '~/types/media'
 
 const mediaItems: MediaItem[] = [
-  { type: 'image', src: '/media/images/restauracion.jpg', title: 'Antes del tratamiento' },
-  { type: 'video', src: '/media/videos/restauracion/restauracionVideo.mp4', title: 'Tratamiento Acústico Demo' },
-  { type: 'image', src: '/media/images/restauracion2.jpg', title: 'Después del tratamiento' }
+  { type: 'image', src: 'media/images/restauracion.jpg', title: 'Antes del tratamiento' },
+  { type: 'video', src: 'media/videos/restauracion/restauracionVideo.mp4', title: 'Tratamiento Acústico Demo' },
+  { type: 'image', src: 'media/images/restauracion2.jpg', title: 'Después del tratamiento' }
 ]
 
 const lightboxOpen = ref(false)

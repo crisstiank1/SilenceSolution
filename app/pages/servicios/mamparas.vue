@@ -1,30 +1,30 @@
 <template>
-  <ServiceLayout 
+  <ServiceLayout
     :title="pageData.title"
     :subtitle="pageData.subtitle"
     :benefits="pageData.benefits"
     :specs="pageData.specs"
   >
-    <!-- Galería -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px] md:auto-rows-[350px]">
       <MediaCard :item="mediaItems[0]!" @click="openLightbox(0)" class="w-full h-full md:col-span-2" />
-      
-      <!-- Placeholder Video -->
+
       <div class="bg-gray-100 dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 relative group cursor-pointer hover:border-green-mid transition-colors duration-300 h-full">
         <div class="absolute inset-0 flex items-center justify-center text-gray-400 font-sans text-center p-6">
           [Video: Demostración de mampara abatible o sistema de rieles 360°]
           <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur rounded-full flex items-center justify-center group-hover:bg-green-mid/20 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
           </div>
         </div>
       </div>
     </div>
-    
-    <MediaLightbox 
-      :isOpen="lightboxOpen" 
-      :items="mediaItems" 
-      :initialIndex="activeIndex" 
-      @close="lightboxOpen = false" 
+
+    <MediaLightbox
+      :isOpen="lightboxOpen"
+      :items="mediaItems"
+      :initialIndex="activeIndex"
+      @close="lightboxOpen = false"
     />
   </ServiceLayout>
 </template>
@@ -36,7 +36,7 @@ import MediaLightbox from '~/components/media/MediaLightbox.vue'
 import type { MediaItem } from '~/types/media'
 
 const mediaItems: MediaItem[] = [
-  { type: 'image', src: '/media/images/laminado.jpg', title: 'Laminado Acústico en oficina' }
+  { type: 'image', src: 'media/images/laminado.jpg', title: 'Laminado Acústico en oficina' }
 ]
 
 const lightboxOpen = ref(false)
