@@ -14,9 +14,9 @@
         <h1 class="font-display text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 uppercase tracking-wide">
           {{ title }}
         </h1>
-        <p class="font-sans text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
-          {{ subtitle }}
-        </p>
+          <p class="font-sans text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed font-light">
+            {{ subtitle }}
+          </p>
       </div>
 
       <!-- Slot para Tabs y Galería (3. Galería variable por página) -->
@@ -48,7 +48,7 @@
               <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
                 <tr v-for="(spec, idx) in specs" :key="idx" class="even:bg-white dark:even:bg-[#0a0a0a]">
                   <th class="px-6 py-4 font-medium text-gray-900 dark:text-gray-100 w-1/3 md:w-1/4">{{ spec.label }}</th>
-                  <td class="px-6 py-4 text-gray-600 dark:text-gray-400">{{ spec.value }}</td>
+                  <td class="px-6 py-4 text-gray-600 dark:text-gray-400 font-mono">{{ spec.value }}</td>
                 </tr>
               </tbody>
             </table>

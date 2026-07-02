@@ -1,25 +1,14 @@
 <template>
-  <section class="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-[#f5f5f5] dark:bg-[#0a0a0a] bg-noise">
-    <div class="absolute inset-0 flex items-center justify-center opacity-[0.15] dark:opacity-10 pointer-events-none">
-      <svg viewBox="0 0 1440 320" class="w-full h-full object-cover" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 160C240 160 240 80 480 80C720 80 720 240 960 240C1200 240 1200 160 1440 160V320H0V160Z" fill="url(#wave-gradient)" opacity="0.5"/>
-        <path d="M0 200C240 200 240 120 480 120C720 120 720 280 960 280C1200 280 1200 200 1440 200V320H0V200Z" fill="url(#wave-gradient)"/>
-        <defs>
-          <linearGradient id="wave-gradient" x1="0" y1="0" x2="1440" y2="320" gradientUnits="userSpaceOnUse">
-            <stop stop-color="var(--color-green-deep)"/>
-            <stop offset="1" stop-color="var(--color-green-mid)"/>
-          </linearGradient>
-        </defs>
-      </svg>
+  <section class="relative min-h-[110vh] flex items-center justify-center overflow-hidden bg-[#f5f5f5] dark:bg-[#0a0a0a] bg-noise">
+    <div class="absolute inset-0 flex items-end justify-center overflow-hidden pointer-events-none opacity-[0.11] dark:opacity-[0.06]">
+      <div class="frequency-bars w-full max-w-6xl scale-[2.5] md:scale-[4] origin-bottom">
+        <div v-for="i in 15" :key="i" class="bar"></div>
+      </div>
     </div>
 
     <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center max-w-5xl mt-12 pb-20 md:pb-24" v-motion :initial="{ opacity: 0 }" :visible-once="{ opacity: 1, transition: { duration: 600 } }">
       <div class="inline-flex items-center gap-3 py-2 px-6 rounded-full bg-white/60 dark:bg-white/5 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-300 font-sans font-medium text-xs tracking-[0.2em] uppercase mb-10 shadow-sm backdrop-blur-md" v-motion :initial="{ opacity: 0, y: 24 }" :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-mid opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-mid"></span>
-        </span>
-        Especialistas en acústica
+        Soluciones acústicas profesionales
       </div>
 
       <h1 class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-gray-900 dark:text-white leading-[1.05] tracking-tight mb-8" v-motion :initial="{ opacity: 0, y: 24 }" :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
