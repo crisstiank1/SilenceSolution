@@ -1,9 +1,12 @@
 <template>
   <div>
     <HeroSection />
+    <div class="sound-wave-divider"></div>
     <AboutSection />
     <StatsSection />
+    <div class="sound-wave-divider"></div>
     <ServicesSection />
+    <div class="sound-wave-divider"></div>
     <ContactSection />
   </div>
 </template>

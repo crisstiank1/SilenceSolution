@@ -9,7 +9,7 @@
           <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-[1.1]">
             ARMONÍA ENTRE <span class="text-green-mid">ACÚSTICA</span> Y DISEÑO
           </h2>
-          <p class="font-sans text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <p class="font-sans text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
             Crear espacios donde el confort acústico y el diseño minimalista convergen, mejorando la calidad de vida y productividad de nuestros clientes mediante soluciones de ingeniería sin obra civil.
           </p>
         </div>
@@ -20,33 +20,41 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 border-t border-gray-200 dark:border-gray-800 pt-16">
-        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-          <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
-            #01
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 border-t border-gray-200 dark:border-gray-800 pt-16">
+        <div class="group" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600 } }">
+          <div class="w-14 h-14 bg-green-accent/10 rounded-2xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 group-hover:bg-green-accent/20 transition-all duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
           </div>
           <h3 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-4">Eficiencia</h3>
-          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-light">
             Instalaciones rápidas y materiales de alta densidad que garantizan resultados inmediatos y medibles.
           </p>
         </div>
 
-        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
-          <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
-            #02
+        <div class="group" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 100 } }">
+          <div class="w-14 h-14 bg-green-accent/10 rounded-2xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 group-hover:bg-green-accent/20 transition-all duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
           </div>
           <h3 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-4">Estética</h3>
-          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-light">
             Buscamos el minimalismo. Diseños limpios que se integran perfectamente con la arquitectura de cualquier espacio.
           </p>
         </div>
 
-        <div class="group cursor-pointer" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }">
-          <div class="font-display text-5xl md:text-6xl font-bold text-gray-200 dark:text-gray-800 mb-4 group-hover:text-green-mid transition-colors duration-500 group-hover:-translate-y-2 transform">
-            #03
+        <div class="group" v-motion :initial="{ opacity: 0, y: 24 }" :visible-once="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }">
+          <div class="w-14 h-14 bg-green-accent/10 rounded-2xl flex items-center justify-center text-green-mid mb-6 group-hover:scale-110 group-hover:bg-green-accent/20 transition-all duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
+              <path d="M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+            </svg>
           </div>
           <h3 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-4">Durabilidad</h3>
-          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="font-sans text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-light">
             Acabados premium diseñados para resistir el paso del tiempo con mínimo mantenimiento y máxima higiene.
           </p>
         </div>
