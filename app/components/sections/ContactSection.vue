@@ -9,7 +9,7 @@
           <h2 class="font-display text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             COTIZA TU <span class="text-green-mid">PROYECTO</span>
           </h2>
-          <p class="font-sans text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
+          <p class="font-sans text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed font-light">
             Déjanos tus datos y un especialista acústico se pondrá en contacto contigo para diseñar la mejor solución para tu espacio.
           </p>
 
@@ -30,10 +30,10 @@
 
             <div class="flex items-center gap-4 pt-4 mt-8 border-t border-gray-200 dark:border-gray-800">
               <p class="font-sans text-sm text-gray-500 uppercase tracking-wider font-medium">Síguenos</p>
-              <a href="#" class="p-2 text-gray-500 hover:text-green-mid transition-colors hover:-translate-y-1 transform">
+              <a href="#" class="p-2 text-gray-500 hover:text-green-mid transition-colors hover:-translate-y-1 transform" aria-label="Instagram">
                 <Instagram :size="22" />
               </a>
-              <a href="#" class="p-2 text-gray-500 hover:text-green-mid transition-colors hover:-translate-y-1 transform">
+              <a href="#" class="p-2 text-gray-500 hover:text-green-mid transition-colors hover:-translate-y-1 transform" aria-label="TikTok">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
               </a>
             </div>
@@ -86,7 +86,7 @@
 
               <div class="relative pt-4">
                 <textarea id="message" v-model="form.message" rows="4" required class="w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 focus:border-green-mid dark:focus:border-green-mid py-3 outline-none text-gray-900 dark:text-white transition-colors peer placeholder-transparent resize-none" placeholder="Cuéntanos tu proyecto..."></textarea>
-                <label for="message" class="absolute left-0 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-5 peer-focus:-top-1 peer-focus:text-sm peer-focus:text-green-mid -translate-y-4 peer-placeholder-shown:translate-y-0 cursor-text pointer-events-none">Cuéntanos tu proyecto...</label>
+                <label for="message" class="absolute left-0 top-4 text-gray-500 dark:text-gray-400 text-sm transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:-top-1 peer-focus:text-sm peer-focus:text-green-mid cursor-text pointer-events-none">Cuéntanos tu proyecto...</label>
               </div>
 
               <div class="pt-6">
@@ -102,10 +102,10 @@
                       <span>Enviando...</span>
                     </template>
                     <template v-else-if="successMsg">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white animate-[bounce_0.5s_ease-in-out]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                       </svg>
-                      <span>¡Mensaje Enviado!</span>
+                      <span>Mensaje enviado</span>
                     </template>
                     <template v-else>
                       <span>Enviar mensaje</span>
@@ -113,7 +113,7 @@
                     </template>
                   </div>
                 </button>
-                <p v-if="errorMsg" class="mt-4 text-center text-red-500 dark:text-red-400 font-medium text-sm transition-opacity">Hubo un error al enviar. Por favor intenta de nuevo.</p>
+                <p v-if="errorMsg" class="mt-4 text-center text-red-500 dark:text-red-400 font-medium text-sm">Hubo un error al enviar. Por favor intenta de nuevo.</p>
               </div>
             </form>
           </div>

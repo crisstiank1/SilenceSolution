@@ -6,12 +6,14 @@
   --color-green-deep: #10403B;
   --color-green-mid: #127369;
   --color-green-accent: #8AA6A3;
+  --color-gold-amber: #C8A87C;
   --color-gray-light: #BFBFBF;
   --color-dark: #0a0a0a;
   --color-dark-card: #111111;
 
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Barlow Condensed', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 :root {
@@ -37,11 +39,13 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
+  font-weight: 300;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .bg-surface {
@@ -70,7 +74,96 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.15;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Sound wave divider — signature element */
+.sound-wave-divider {
+  position: relative;
+  height: 2rem;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.5;
+}
+.sound-wave-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 10px,
+    var(--color-green-mid) 10px,
+    var(--color-green-mid) 11px,
+    transparent 11px,
+    transparent 22px
+  );
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C150,10 200,110 350,60 C500,10 550,110 700,60 C850,10 900,110 1050,60 C1100,35 1150,85 1200,60' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+  mask-size: 1200px 100%;
+  mask-repeat: repeat-x;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C150,10 200,110 350,60 C500,10 550,110 700,60 C850,10 900,110 1050,60 C1100,35 1150,85 1200,60' fill='none' stroke='black' stroke-width='2'/%3E%3C/svg%3E");
+  -webkit-mask-size: 1200px 100%;
+  -webkit-mask-repeat: repeat-x;
+  animation: wave-drift 6s linear infinite;
+}
+
+@keyframes wave-drift {
+  0% { mask-position: 0 0; -webkit-mask-position: 0 0; }
+  100% { mask-position: -1200px 0; -webkit-mask-position: -1200px 0; }
+}
+
+/* Animated frequency bars for hero */
+.frequency-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 180px;
+}
+.frequency-bars .bar {
+  width: 10px;
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.95), rgba(16, 185, 129, 0.95));
+  border-radius: 999px 999px 0 0;
+  animation: freq-pulse 1.3s ease-in-out infinite;
+  opacity: 0.7;
+  box-shadow: 0 0 22px rgba(34, 197, 94, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+:where(:not(.dark)) .frequency-bars .bar {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 1), rgba(34, 197, 94, 1));
+  opacity: 0.9;
+  box-shadow: 0 0 28px rgba(16, 185, 129, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.dark .frequency-bars .bar {
+  opacity: 0.75;
+  box-shadow: 0 0 22px rgba(34, 197, 94, 0.5);
+}
+.frequency-bars .bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+.frequency-bars .bar:nth-child(2) { height: 65%; animation-delay: 0.1s; }
+.frequency-bars .bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+.frequency-bars .bar:nth-child(4) { height: 80%; animation-delay: 0.3s; }
+.frequency-bars .bar:nth-child(5) { height: 55%; animation-delay: 0.4s; }
+.frequency-bars .bar:nth-child(6) { height: 90%; animation-delay: 0.15s; }
+.frequency-bars .bar:nth-child(7) { height: 45%; animation-delay: 0.25s; }
+.frequency-bars .bar:nth-child(8) { height: 70%; animation-delay: 0.35s; }
+.frequency-bars .bar:nth-child(9) { height: 60%; animation-delay: 0.05s; }
+.frequency-bars .bar:nth-child(10) { height: 75%; animation-delay: 0.45s; }
+.frequency-bars .bar:nth-child(11) { height: 35%; animation-delay: 0.55s; }
+.frequency-bars .bar:nth-child(12) { height: 85%; animation-delay: 0.2s; }
+.frequency-bars .bar:nth-child(13) { height: 50%; animation-delay: 0.1s; }
+.frequency-bars .bar:nth-child(14) { height: 70%; animation-delay: 0.3s; }
+.frequency-bars .bar:nth-child(15) { height: 45%; animation-delay: 0.4s; }
+
+@keyframes freq-pulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.3; }
+  50% { transform: scaleY(1.15); opacity: 0.6; }
+}
+
+/* Count-up utility */
+.count-up-value {
+  display: inline-block;
 }
